@@ -1,0 +1,120 @@
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maladcha Gauriputra | Utsav Se Seva</title>
+<meta name="description" content="Utsav Se Seva — a community initiative for food, education, health and essential support.">
+<style>
+:root{--bg:#08070b;--card:#121019;--text:#fffaf2;--muted:#bdb7c7;--gold:#f6b84b;--orange:#ff7a18;--line:#282331}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#3b160c 0,#120b10 35%,var(--bg) 65%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{max-width:1150px;margin:auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:20;background:rgba(8,7,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.3px}.brand span{display:block;font-size:11px;color:var(--gold);letter-spacing:2px;margin-top:2px}
+.navlinks{display:flex;gap:20px;font-size:14px;color:#ddd}.navlinks a:hover{color:var(--gold)}
+.hero{min-height:720px;display:grid;place-items:center;text-align:center;padding:90px 0 70px;position:relative;overflow:hidden}
+.glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,24,.32),transparent 68%);filter:blur(8px);animation:pulse 5s infinite alternate}
+@keyframes pulse{to{transform:scale(1.25);opacity:.65}}
+.badge{display:inline-flex;padding:8px 13px;border:1px solid rgba(246,184,75,.35);border-radius:999px;color:#ffd789;background:rgba(246,184,75,.07);font-size:12px;font-weight:800;letter-spacing:1px}
+h1{font-size:clamp(48px,9vw,100px);line-height:.92;margin:24px 0 20px;letter-spacing:-4px}
+.grad{background:linear-gradient(110deg,#fff,#ffd789 35%,#ff8b38 75%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:700px;margin:0 auto;color:var(--muted);font-size:18px;line-height:1.7}.cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{padding:14px 20px;border-radius:14px;font-weight:900;border:1px solid #403745;background:#17131c}.primary{background:linear-gradient(135deg,var(--gold),var(--orange));color:#170d06;border:0}
+section{padding:85px 0}.eyebrow{color:var(--gold);font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.title{font-size:clamp(32px,5vw,58px);margin:10px 0 15px;letter-spacing:-2px}.sub{color:var(--muted);line-height:1.7;max-width:700px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}.card{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:22px;padding:25px;transition:.25s}.card:hover{transform:translateY(-5px);border-color:#594d3b}.icon{font-size:34px}.card h3{margin:13px 0 8px}.card p{color:var(--muted);line-height:1.6;margin:0}
+.amounts{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.amount{padding:13px 17px;border:1px solid #3a3340;background:#15121a;border-radius:12px;color:white;font-weight:800;cursor:pointer}.amount.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(246,184,75,.12);color:#ffd789}
+.donate{background:linear-gradient(135deg,rgba(255,122,24,.12),rgba(246,184,75,.05));border:1px solid #3a2b24;border-radius:30px;padding:35px}.form{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:25px}.input{width:100%;padding:15px 16px;border-radius:12px;border:1px solid #3a3340;background:#0e0c12;color:white;font-size:15px;outline:none}.input:focus{border-color:var(--gold)}.full{grid-column:1/-1}
+.events{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:30px}.event{padding:22px;border-left:3px solid var(--gold);background:#100e14;border-radius:12px}.event b{color:#ffd789}.event p{margin:7px 0 0;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}.stat{padding:25px;text-align:center;border:1px solid var(--line);border-radius:20px;background:#0e0c12}.stat strong{font-size:32px;color:#ffd789;display:block}.stat span{color:var(--muted);font-size:13px}
+footer{padding:45px 0;border-top:1px solid var(--line);color:var(--muted);text-align:center}.small{font-size:12px;line-height:1.6}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);padding:13px 18px;background:#fff;color:#111;border-radius:12px;font-weight:800;z-index:50;transition:.3s}.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:800px){.navlinks{display:none}.grid,.events,.stats{grid-template-columns:1fr}.form{grid-template-columns:1fr}.full{grid-column:auto}h1{letter-spacing:-2px}.hero{min-height:650px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav">
+<div class="brand">MALADCHA GAURIPUTRA<span>UTSAV SE SEVA</span></div>
+<div class="navlinks"><a href="#seva">Seva</a><a href="#events">Events</a><a href="#transparency">Transparency</a><a href="#donate">Donate</a></div>
+</div></nav>
+
+<header class="hero"><div class="glow"></div><div class="wrap" style="position:relative">
+<div class="badge">उत्सवातून सेवा • UTSAV SE SEVA • उत्सव से सेवा</div>
+<h1><span class="grad">Celebrate.</span><br>Serve. Together.</h1>
+<p>A community initiative where celebration becomes an opportunity to support people through food, education, health and essential care.</p>
+<div class="cta"><a class="btn primary" href="#donate">Contribute ₹101+</a><a class="btn" href="#seva">Explore Seva</a></div>
+</div></header>
+
+<section id="seva"><div class="wrap">
+<div class="eyebrow">Choose Your Seva</div><div class="title">Small contribution.<br>Meaningful support.</div>
+<p class="sub">Choose where you would like your voluntary contribution to go. Every contribution is made by choice and is intended to support community-service activities.</p>
+<div class="grid">
+<div class="card"><div class="icon">🍱</div><h3>Food & Nutrition</h3><p>Meal support, food kits, fruits, milk and hospital-attendant meal support.</p></div>
+<div class="card"><div class="icon">📚</div><h3>Education</h3><p>School bags, notebooks, stationery, uniforms, books and learning support.</p></div>
+<div class="card"><div class="icon">🩺</div><h3>Health</h3><p>Check-up camps, screening and support through qualified, verified partners.</p></div>
+<div class="card"><div class="icon">👴</div><h3>Senior Care</h3><p>Meals, groceries, toiletries, bedding and essential support for seniors.</p></div>
+<div class="card"><div class="icon">🧒</div><h3>Child Care</h3><p>Support for verified child-care institutions and registered organizations.</p></div>
+<div class="card"><div class="icon">🤝</div><h3>Essentials & Relief</h3><p>Hygiene essentials, mobility support and verified emergency-relief activities.</p></div>
+</div></div></section>
+
+<section id="events"><div class="wrap">
+<div class="eyebrow">Community Calendar</div><div class="title">Utsav + Seva</div>
+<p class="sub">Public event and seva information can be updated here as plans are confirmed.</p>
+<div class="events">
+<div class="event"><b>11 September</b><p>Aagman • 3:30 PM</p></div>
+<div class="event"><b>11 September</b><p>121 Devotee Aarti • 8:00 PM</p></div>
+<div class="event"><b>17 September</b><p>Meal Boxes + School Kits • 10:30 AM</p></div>
+<div class="event"><b>19 September</b><p>Bhandara • 8:00 PM</p></div>
+</div></div></section>
+
+<section id="transparency"><div class="wrap">
+<div class="eyebrow">Open & Clear</div><div class="title">Transparency matters.</div>
+<p class="sub">Use this section to publish verified contribution totals, activity updates, photographs, bills and other appropriate records as the initiative progresses.</p>
+<div class="stats"><div class="stat"><strong>₹101+</strong><span>Suggested minimum contribution</span></div><div class="stat"><strong>6</strong><span>Seva categories</span></div><div class="stat"><strong>100%</strong><span>Voluntary participation</span></div></div>
+</div></section>
+
+<section id="donate"><div class="wrap"><div class="donate">
+<div class="eyebrow">Make a Contribution</div><div class="title">Your choice. Your seva.</div>
+<p class="sub">Select a seva category and contribution amount. Payment will be processed securely through Cashfree.</p>
+<div class="amounts">
+<button class="amount active" data-amount="101">₹101</button><button class="amount" data-amount="251">₹251</button><button class="amount" data-amount="501">₹501</button><button class="amount" data-amount="1001">₹1001</button>
+</div>
+<div class="form">
+<input class="input" id="name" placeholder="Full Name">
+<input class="input" id="phone" placeholder="Mobile Number">
+<input class="input" id="email" placeholder="Email (optional)">
+<select class="input" id="seva"><option>Food & Nutrition</option><option>Education</option><option>Health</option><option>Senior Care</option><option>Child Care</option><option>Essentials & Relief</option></select>
+<button class="btn primary full" id="pay">Proceed to Cashfree Payment</button>
+</div>
+<p class="small">By continuing, you voluntarily choose to contribute. This page does not promise tax benefits or claim any registration unless separately verified and published.</p>
+</div></div></section>
+
+<footer><div class="wrap"><b style="color:#fff">Maladcha Gauriputra – Malad Sarvajanik Utsav Mandal</b><br><span class="small">Utsav Se Seva • Seva • Sanskar • Sanskriti</span></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+let selected=101;
+document.querySelectorAll('.amount').forEach(b=>b.onclick=()=>{document.querySelectorAll('.amount').forEach(x=>x.classList.remove('active'));b.classList.add('active');selected=Number(b.dataset.amount)});
+document.getElementById('pay').onclick=()=>{
+ const name=document.getElementById('name').value.trim(), phone=document.getElementById('phone').value.trim();
+ if(!name||!phone){show("Name aur mobile number bharna zaroori hai.");return}
+ /*
+  CASHFREE INTEGRATION:
+  1. Backend se order create karo.
+  2. Backend response ka payment_session_id yahan lao.
+  3. Cashfree JS SDK load karke:
+     const cashfree = Cashfree({mode:"production"});
+     cashfree.checkout({paymentSessionId:"SESSION_ID",redirectTarget:"_self"});
+  IMPORTANT: Client secret kabhi frontend mein mat daalna.
+ */
+ show("Website ready hai. Cashfree checkout connect karne ke liye backend API URL add karna hai.");
+};
+function show(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),3500)}
+</script>
+</body>
+</html>'''
+
+path = Path("/mnt/data/index.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created: {path}")
