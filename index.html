@@ -260,4 +260,812 @@ section{
 
 .card p{
   color:var(--muted);
-  line
+  line-height:1.6;
+  margin:0;
+}
+
+/* EVENTS */
+
+.events{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-top:30px;
+}
+
+.event{
+  padding:22px;
+  border-left:3px solid var(--gold);
+  background:#100e14;
+  border-radius:12px;
+}
+
+.event b{
+  color:#ffd789;
+}
+
+.event p{
+  margin:7px 0 0;
+  color:var(--muted);
+}
+
+/* TRANSPARENCY */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:30px;
+}
+
+.stat{
+  padding:25px;
+  text-align:center;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#0e0c12;
+}
+
+.stat strong{
+  font-size:32px;
+  color:#ffd789;
+  display:block;
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* DONATION */
+
+.donate{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,122,24,.12),
+      rgba(246,184,75,.05)
+    );
+  border:1px solid #3a2b24;
+  border-radius:30px;
+  padding:35px;
+}
+
+.amounts{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:22px 0;
+}
+
+.amount{
+  padding:13px 17px;
+  border:1px solid #3a3340;
+  background:#15121a;
+  border-radius:12px;
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.amount.active{
+  border-color:var(--gold);
+  box-shadow:0 0 0 2px rgba(246,184,75,.12);
+  color:#ffd789;
+}
+
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+  margin-top:25px;
+}
+
+.input{
+  width:100%;
+  padding:15px 16px;
+  border-radius:12px;
+  border:1px solid #3a3340;
+  background:#0e0c12;
+  color:white;
+  font-size:15px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:var(--gold);
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+.small{
+  font-size:12px;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+/* FOOTER */
+
+footer{
+  padding:45px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  text-align:center;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%) translateY(100px);
+  padding:13px 18px;
+  background:#fff;
+  color:#111;
+  border-radius:12px;
+  font-weight:800;
+  z-index:100;
+  transition:.3s;
+  max-width:90%;
+  text-align:center;
+}
+
+.toast.show{
+  transform:translateX(-50%) translateY(0);
+}
+
+/* SUCCESS */
+
+.success{
+  display:none;
+  margin-top:20px;
+  padding:20px;
+  border:1px solid #3b6840;
+  background:rgba(50,130,60,.1);
+  border-radius:16px;
+}
+
+.success.show{
+  display:block;
+}
+
+@media(max-width:800px){
+
+  .navlinks{
+    display:none;
+  }
+
+  .grid,
+  .events,
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .form{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  h1{
+    letter-spacing:-2px;
+  }
+
+  .hero{
+    min-height:650px;
+  }
+
+  .donate{
+    padding:25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+<div class="wrap nav">
+
+  <div class="brand">
+    MALADCHA GAURIPUTRA
+    <span>UTSAV SE SEVA</span>
+  </div>
+
+  <div class="navlinks">
+    <a href="#seva">Seva</a>
+    <a href="#events">Events</a>
+    <a href="#transparency">Transparency</a>
+    <a href="#donate">Donate</a>
+  </div>
+
+</div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="glow"></div>
+
+<div class="wrap" style="position:relative">
+
+  <div class="badge">
+    उत्सवातून सेवा • UTSAV SE SEVA • उत्सव से सेवा
+  </div>
+
+  <h1>
+    <span class="grad">Celebrate.</span><br>
+    Serve. Together.
+  </h1>
+
+  <p>
+    A community initiative where celebration becomes
+    an opportunity to support people through food,
+    education, health and essential care.
+  </p>
+
+  <div class="cta">
+    <a class="btn primary" href="#donate">
+      Contribute ₹101+
+    </a>
+
+    <a class="btn" href="#seva">
+      Explore Seva
+    </a>
+  </div>
+
+</div>
+
+</header>
+
+
+<!-- SEVA -->
+
+<section id="seva">
+
+<div class="wrap">
+
+  <div class="eyebrow">
+    Choose Your Seva
+  </div>
+
+  <div class="title">
+    Small contribution.<br>
+    Meaningful support.
+  </div>
+
+  <p class="sub">
+    Choose where you would like your voluntary contribution
+    to go. Every contribution is made by choice and is
+    intended to support community-service activities.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🍱</div>
+      <h3>Food & Nutrition</h3>
+      <p>
+        Meal support, food kits, fruits, milk and
+        hospital-attendant meal support.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>Education</h3>
+      <p>
+        School bags, notebooks, stationery, uniforms,
+        books and learning support.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🩺</div>
+      <h3>Health</h3>
+      <p>
+        Check-up camps, screening and support through
+        qualified, verified partners.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">👴</div>
+      <h3>Senior Care</h3>
+      <p>
+        Meals, groceries, toiletries, bedding and
+        essential support for seniors.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🧒</div>
+      <h3>Child Care</h3>
+      <p>
+        Support for verified child-care institutions
+        and registered organizations.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🤝</div>
+      <h3>Essentials & Relief</h3>
+      <p>
+        Hygiene essentials, mobility support and
+        verified emergency-relief activities.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- EVENTS -->
+
+<section id="events">
+
+<div class="wrap">
+
+  <div class="eyebrow">
+    Community Calendar
+  </div>
+
+  <div class="title">
+    Utsav + Seva
+  </div>
+
+  <p class="sub">
+    Public event and seva information can be updated here
+    as plans are confirmed.
+  </p>
+
+  <div class="events">
+
+    <div class="event">
+      <b>11 September</b>
+      <p>Aagman • 3:30 PM</p>
+    </div>
+
+    <div class="event">
+      <b>11 September</b>
+      <p>121 Devotee Aarti • 8:00 PM</p>
+    </div>
+
+    <div class="event">
+      <b>17 September</b>
+      <p>Meal Boxes + School Kits • 10:30 AM</p>
+    </div>
+
+    <div class="event">
+      <b>19 September</b>
+      <p>Bhandara • 8:00 PM</p>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- TRANSPARENCY -->
+
+<section id="transparency">
+
+<div class="wrap">
+
+  <div class="eyebrow">
+    Open & Clear
+  </div>
+
+  <div class="title">
+    Transparency matters.
+  </div>
+
+  <p class="sub">
+    Verified contribution totals, activity updates,
+    photographs, bills and other appropriate records
+    can be published here as the initiative progresses.
+  </p>
+
+  <div class="stats">
+
+    <div class="stat">
+      <strong>₹101+</strong>
+      <span>Suggested minimum contribution</span>
+    </div>
+
+    <div class="stat">
+      <strong>6</strong>
+      <span>Seva categories</span>
+    </div>
+
+    <div class="stat">
+      <strong>100%</strong>
+      <span>Voluntary participation</span>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- DONATION -->
+
+<section id="donate">
+
+<div class="wrap">
+
+<div class="donate">
+
+  <div class="eyebrow">
+    Make a Contribution
+  </div>
+
+  <div class="title">
+    Your choice. Your seva.
+  </div>
+
+  <p class="sub">
+    Select a seva category and contribution amount.
+    Payment will be processed securely through Cashfree.
+  </p>
+
+
+  <!-- AMOUNTS -->
+
+  <div class="amounts">
+
+    <button class="amount active" data-amount="101">
+      ₹101
+    </button>
+
+    <button class="amount" data-amount="251">
+      ₹251
+    </button>
+
+    <button class="amount" data-amount="501">
+      ₹501
+    </button>
+
+    <button class="amount" data-amount="1001">
+      ₹1001
+    </button>
+
+  </div>
+
+
+  <!-- FORM -->
+
+  <div class="form">
+
+    <input
+      class="input"
+      id="name"
+      type="text"
+      placeholder="Full Name"
+      maxlength="100"
+    >
+
+    <input
+      class="input"
+      id="phone"
+      type="tel"
+      placeholder="Mobile Number"
+      maxlength="10"
+      inputmode="numeric"
+    >
+
+    <input
+      class="input"
+      id="email"
+      type="email"
+      placeholder="Email (optional)"
+      maxlength="100"
+    >
+
+    <select
+      class="input"
+      id="seva"
+    >
+      <option>Food & Nutrition</option>
+      <option>Education</option>
+      <option>Health</option>
+      <option>Senior Care</option>
+      <option>Child Care</option>
+      <option>Essentials & Relief</option>
+    </select>
+
+    <button
+      class="btn primary full"
+      id="pay"
+      type="button"
+    >
+      Proceed to Cashfree Payment
+    </button>
+
+  </div>
+
+
+  <div
+    class="success"
+    id="success"
+  >
+    Payment process completed. Thank you for your contribution.
+  </div>
+
+
+  <p class="small">
+    By continuing, you voluntarily choose to contribute.
+    This page does not promise tax benefits or claim any
+    registration unless separately verified and published.
+  </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="wrap">
+
+  <b style="color:#fff">
+    Maladcha Gauriputra – Malad Sarvajanik Utsav Mandal
+  </b>
+
+  <br>
+
+  <span class="small">
+    Utsav Se Seva • Seva • Sanskar • Sanskriti
+  </span>
+
+</div>
+
+</footer>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+let selectedAmount = 101;
+
+
+/* AMOUNT BUTTONS */
+
+document.querySelectorAll(".amount").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    document
+      .querySelectorAll(".amount")
+      .forEach(x => x.classList.remove("active"));
+
+    button.classList.add("active");
+
+    selectedAmount = Number(
+      button.dataset.amount
+    );
+
+  });
+
+});
+
+
+/* TOAST */
+
+function showToast(message){
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+
+    toast.classList.remove("show");
+
+  }, 3500);
+
+}
+
+
+/* CASHFREE PAYMENT */
+
+document
+  .getElementById("pay")
+  .addEventListener("click", async () => {
+
+    const button =
+      document.getElementById("pay");
+
+    const name =
+      document
+        .getElementById("name")
+        .value
+        .trim();
+
+    const phone =
+      document
+        .getElementById("phone")
+        .value
+        .replace(/\D/g, "");
+
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
+    const seva =
+      document
+        .getElementById("seva")
+        .value;
+
+
+    /* VALIDATION */
+
+    if(!name){
+
+      showToast("Please enter your name.");
+
+      return;
+    }
+
+
+    if(!/^[0-9]{10}$/.test(phone)){
+
+      showToast(
+        "Please enter a valid 10-digit mobile number."
+      );
+
+      return;
+    }
+
+
+    if(
+      email &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    ){
+
+      showToast(
+        "Please enter a valid email address."
+      );
+
+      return;
+    }
+
+
+    button.disabled = true;
+
+    button.textContent =
+      "Creating secure payment...";
+
+
+    try{
+
+      /*
+       * IMPORTANT:
+       * Cashfree secret key is NEVER used here.
+       *
+       * Our Cloudflare Worker creates the Cashfree order.
+       */
+
+      const response =
+        await fetch(
+          "/api/create-order",
+          {
+            method:"POST",
+
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+
+            body:JSON.stringify({
+
+              amount:selectedAmount,
+
+              name:name,
+
+              phone:phone,
+
+              email:email,
+
+              seva:seva
+
+            })
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      if(
+        !response.ok ||
+        !data.payment_session_id
+      ){
+
+        console.error(
+          "Create order response:",
+          data
+        );
+
+        throw new Error(
+          "Payment order could not be created."
+        );
+      }
+
+
+      /* CASHFREE CHECKOUT */
+
+      const cashfree =
+        Cashfree({
+          mode:"production"
+        });
+
+
+      button.textContent =
+        "Opening Cashfree...";
+
+
+      await cashfree.checkout({
+
+        paymentSessionId:
+          data.payment_session_id,
+
+        redirectTarget:
+          "_self"
+
+      });
+
+
+    }catch(error){
+
+      console.error(
+        "Cashfree error:",
+        error
+      );
+
+      showToast(
+        "Payment start nahi ho paya. Please try again."
+      );
+
+      button.disabled = false;
+
+      button.textContent =
+        "Proceed to Cashfree Payment";
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
