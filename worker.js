@@ -25,23 +25,23 @@ async function createOrder(request, env) {
     const name = String(body.name || "").trim();
     const phone = String(body.phone || "").replace(/\D/g, "");
     const email = String(body.email || "").trim();
-    const seva = String(body.seva || "Community Seva").trim();
 
-    if (!Number.isFinite(amount) || amount < 101 || amount > 1000000) {
+    if (!Number.isFinite(amount) || amount < 101) {
       return Response.json(
-        { error: "Invalid contribution amount." },
+        { error: "Invalid amount" },
         { status: 400 }
       );
     }
 
     if (!name || !/^[0-9]{10}$/.test(phone)) {
       return Response.json(
-        { error: "Valid name and 10-digit mobile number are required." },
+        { error: "Invalid name or phone" },
         { status: 400 }
       );
     }
 
-    const orderId = `MG-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
+    const orderId =
+      `MG-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
 
     const payload = {
       order_id: orderId,
@@ -59,42 +59,46 @@ async function createOrder(request, env) {
 
       order_meta: {
         return_url:
-          `${new URL(request.url).origin}/?payment=return&order_id=${encodeURIComponent(orderId)}`
+          `${urlOrigin(request)}/?payment=return&order_id=${encodeURIComponent(orderId)}`
       },
 
-      order_note:
-        `Utsav Se Seva - ${seva}`.slice(0, 200)
+      order_note: "Utsav Se Seva"
     };
 
     const response = await fetch(
       "https://api.cashfree.com/pg/orders",
       {
         method: "POST",
-
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
           "x-api-version": "2025-01-01",
           "x-client-id": env.CASHFREE_CLIENT_ID,
           "x-client-secret": env.CASHFREE_CLIENT_SECRET,
           "x-request-id": crypto.randomUUID(),
           "x-idempotency-key": crypto.randomUUID()
         },
-
         body: JSON.stringify(payload)
       }
     );
 
-    const data = await response.json();
+    const text = await response.text();
+
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = { raw_response: text };
+    }
 
     if (!response.ok) {
-      console.error(
-        "Cashfree create order error:",
-        response.status,
-        data
-      );
-
       return Response.json(
-        { error: "Unable to create payment order." },
+        {
+          ok: false,
+          cashfree_status: response.status,
+          cashfree_response: data
+        },
         { status: 502 }
       );
     }
@@ -106,11 +110,16 @@ async function createOrder(request, env) {
     });
 
   } catch (error) {
-    console.error("create-order error:", error);
-
     return Response.json(
-      { error: "Server error while creating payment order." },
+      {
+        ok: false,
+        error: error.message
+      },
       { status: 500 }
     );
   }
+}
+
+function urlOrigin(request) {
+  return new URL(request.url).origin;
 }
